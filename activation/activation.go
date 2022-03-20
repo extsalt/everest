@@ -1,9 +1,19 @@
 package activation
 
-func Relu(input float64) float64 {
-	if input < 0 {
-		return 0
-	}
+import "math"
 
-	return input
+func Relu(input float64) float64 {
+	return math.Max(0, input)
+}
+
+func LeakyRelu(input float64) float64 {
+	return math.Max(0.1*input, input)
+}
+
+func ParametricRelu(input float64, scalar float64) float64 {
+	return math.Max(input*scalar, input)
+}
+
+func Sigmoid(input float64) float64 {
+	return 1 / (1 + math.Pow(math.E, -input))
 }
